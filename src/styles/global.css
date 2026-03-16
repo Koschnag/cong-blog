@@ -1,0 +1,264 @@
+:root {
+  --bg: #0a0a0b;
+  --text: #c8c4bc;
+  --accent: #c4a882;
+  --surface: #111113;
+  --muted: #6b6561;
+  --font-body: Georgia, 'Times New Roman', serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Header */
+header {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--surface);
+  margin-bottom: 2rem;
+}
+
+header nav {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+header .site-title {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  text-transform: lowercase;
+}
+
+header nav a {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+
+header nav a:hover {
+  color: var(--text);
+}
+
+/* Post list */
+.post-list {
+  list-style: none;
+}
+
+.post-list li {
+  margin-bottom: 2.5rem;
+}
+
+.post-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.post-title {
+  font-size: 1.2rem;
+  font-weight: normal;
+  line-height: 1.4;
+  margin-bottom: 0.4rem;
+}
+
+.post-title a {
+  color: var(--text);
+}
+
+.post-title a:hover {
+  color: var(--accent);
+}
+
+.post-excerpt {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  background: var(--surface);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  letter-spacing: 0.03em;
+}
+
+.tag:hover {
+  color: var(--accent);
+}
+
+/* Article */
+article h1 {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+article .meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  letter-spacing: 0.03em;
+}
+
+article .content {
+  margin-top: 1rem;
+}
+
+article .content h2 {
+  font-size: 1.15rem;
+  font-weight: normal;
+  color: var(--accent);
+  margin-top: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+
+article .content h3 {
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--text);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+article .content p {
+  margin-bottom: 1.2rem;
+}
+
+article .content blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+article .content ul,
+article .content ol {
+  margin-bottom: 1.2rem;
+  padding-left: 1.5rem;
+}
+
+article .content li {
+  margin-bottom: 0.3rem;
+}
+
+article .content code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--surface);
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+}
+
+article .content pre {
+  background: var(--surface);
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 3px;
+  margin-bottom: 1.2rem;
+}
+
+article .content pre code {
+  background: none;
+  padding: 0;
+}
+
+article .content hr {
+  border: none;
+  border-top: 1px solid var(--surface);
+  margin: 2rem 0;
+}
+
+article .content em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+article .content strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Footer */
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--surface);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+/* About page */
+.about-content {
+  max-width: 640px;
+}
+
+.about-content p {
+  margin-bottom: 1.2rem;
+}
+
+/* Tag page heading */
+.tag-heading {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  letter-spacing: 0.03em;
+}

@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+
+const postFiles = import.meta.glob('../content/blog/*.md', { eager: true });
+const posts = Object.values(postFiles) as any[];
+const sorted = posts.sort((a, b) =>
+  new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
+);
+const base = import.meta.env.BASE_URL;
+
+function slugFromPath(filePath: string) {
+  return filePath.split('/').pop()?.replace('.md', '') ?? '';
+}
+---
+
+<Base title="cong-blog">
+  <ul class="post-list">
+    {sorted.map((post) => {
+      const slug = slugFromPath(post.file);
+      return (
+        <li>
+          <span class="post-date">{post.frontmatter.date}</span>
+          <h2 class="post-title">
+            <a href={`${base}blog/${slug}`}>{post.frontmatter.title}</a>
+          </h2>
+          {post.frontmatter.excerpt && (
+            <p class="post-excerpt">{post.frontmatter.excerpt}</p>
+          )}
+          {post.frontmatter.tags && (
+            <div class="tags">
+              {post.frontmatter.tags.map((tag: string) => (
+                <a class="tag" href={`${base}tags/${tag}`}>#{tag}</a>
+              ))}
+            </div>
+          )}
+        </li>
+      );
+    })}
+  </ul>
+</Base>

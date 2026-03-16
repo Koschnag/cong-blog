@@ -1,0 +1,22 @@
+{
+  "name": "cong-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:39863/git/Koschnag/cong-blog"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.0.0",
+    "astro": "^6.0.5"
+  }
+}

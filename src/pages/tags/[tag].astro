@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const postFiles = import.meta.glob('../../content/blog/*.md', { eager: true });
+  const posts = Object.entries(postFiles).map(([path, post]: [string, any]) => ({
+    ...post,
+    _path: path,
+  }));
+
+  const tagSet = new Set<string>();
+  posts.forEach((post) => {
+    (post.frontmatter.tags || []).forEach((tag: string) => tagSet.add(tag));
+  });
+
+  return [...tagSet].map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((p) => (p.frontmatter.tags || []).includes(tag))
+        .sort((a, b) =>
+          new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
+        ),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+function slugFromPath(filePath: string) {
+  return filePath.split('/').pop()?.replace('.md', '') ?? '';
+}
+---
+
+<Base title={`#${tag}`}>
+  <p class="tag-heading">#{tag}</p>
+  <ul class="post-list">
+    {posts.map((post: any) => {
+      const slug = slugFromPath(post._path);
+      return (
+        <li>
+          <span class="post-date">{post.frontmatter.date}</span>
+          <h2 class="post-title">
+            <a href={`${base}blog/${slug}`}>{post.frontmatter.title}</a>
+          </h2>
+          {post.frontmatter.excerpt && (
+            <p class="post-excerpt">{post.frontmatter.excerpt}</p>
+          )}
+        </li>
+      );
+    })}
+  </ul>
+</Base>
