@@ -24,7 +24,7 @@ const base = import.meta.env.BASE_URL;
           &nbsp;&middot;&nbsp;
           {post.frontmatter.tags.map((tag: string, i: number) => (
             <>
-              <a href={`${base}tags/${tag}`}>#{tag}</a>
+              <a href={`${base}tags/${tag}/`}>#{tag}</a>
               {i < post.frontmatter.tags.length - 1 && ' '}
             </>
           ))}

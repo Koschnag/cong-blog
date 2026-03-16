@@ -21,7 +21,7 @@ function slugFromPath(filePath: string) {
         <li>
           <span class="post-date">{post.frontmatter.date}</span>
           <h2 class="post-title">
-            <a href={`${base}blog/${slug}`}>{post.frontmatter.title}</a>
+            <a href={`${base}blog/${slug}/`}>{post.frontmatter.title}</a>
           </h2>
           {post.frontmatter.excerpt && (
             <p class="post-excerpt">{post.frontmatter.excerpt}</p>
@@ -29,7 +29,7 @@ function slugFromPath(filePath: string) {
           {post.frontmatter.tags && (
             <div class="tags">
               {post.frontmatter.tags.map((tag: string) => (
-                <a class="tag" href={`${base}tags/${tag}`}>#{tag}</a>
+                <a class="tag" href={`${base}tags/${tag}/`}>#{tag}</a>
               ))}
             </div>
           )}
